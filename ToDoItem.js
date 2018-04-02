@@ -13,7 +13,12 @@ export default class ToDoItem extends React.Component {
         
         return (
             
-                <View key={this.props.itemID}><Text>{this.props.displayedText}</Text> 
+                <View 
+            
+                    key={this.props.itemID}
+                    style = {this.props.textDecoration ? styles.none : styles.decoration}
+            
+                ><Text>{this.props.displayedText}</Text> 
             
                 <Switch 
                     key={this.props.index} 
@@ -27,4 +32,14 @@ export default class ToDoItem extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    
+    decoration: {
+        backgroundColor: 'red',
+    },
+    none: {
+        backgroundColor: 'white',
+    },
+});
 

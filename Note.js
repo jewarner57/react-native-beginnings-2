@@ -103,9 +103,10 @@ export default class Note extends React.Component {
     
     render() {
         return (
-            <View>
+            <View style = {styles.container}>
                 <View>
-                    <TextInput rows="8" cols="50" 
+                    <TextInput  
+                                style={styles.textArea}
                                 value = {this.state.textValue}
                                 onChangeText={(textValue) => this.setState({textValue})}>
                     </TextInput>
@@ -123,3 +124,18 @@ export default class Note extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    
+    container: {
+        marginTop: 50,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    
+    textArea: {
+        width: 250,
+        textAlign: 'center',
+    }
+});

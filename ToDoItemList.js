@@ -16,13 +16,18 @@ export default class ToDoItemList extends React.Component {
             
             {this.props.toDoItem.map((toDoItem , index) => (
             
-                <ToDoItem key={toDoItem.id} textDecoration = {toDoItem.textDecoration} 
-                itemID = {toDoItem.id} 
-                displayedText = {toDoItem.displayedText} 
-                index = {index} 
-                onChange={(value) => toDoItem.checked = value} 
-                val = {toDoItem.checked}
-                boxChecked = {toDoItem.checked}> </ToDoItem>
+                <ToDoItem 
+
+                    key={toDoItem.id} 
+                    textDecoration = {toDoItem.textDecoration} 
+                    itemID = {toDoItem.id} 
+                    displayedText = {toDoItem.displayedText} 
+                    index = {index} 
+                    onChange={(value) => toDoItem.checked = value} 
+                    val = {toDoItem.checked}
+                    boxChecked = {toDoItem.checked}>
+
+                </ToDoItem>
             
             ))}
                 
