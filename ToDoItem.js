@@ -28,6 +28,7 @@ export default class ToDoItem extends React.Component {
                         key={this.props.index} 
                         onValueChange={this.props.onChange}
                         value = {0}
+                        step = {1}
                     />
                 </View>
                 

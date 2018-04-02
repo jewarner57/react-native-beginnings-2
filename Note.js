@@ -48,7 +48,7 @@ export default class Note extends React.Component {
                     
                 }
                 
-                toDoItemArray[i].checked = 1;
+                //atoDoItemArray[i].checked = 1;
                 
             }
             
@@ -74,7 +74,7 @@ export default class Note extends React.Component {
             
         })
         
-        this.setState({toDoItem: toDoItemArray, currentTextVal: textValue, toDoItemCount: this.state.toDoItemCount+1});
+        this.setState({toDoItem: toDoItemArray, textValue: "", toDoItemCount: this.state.toDoItemCount+1});
     }
     
     checked(event) {
