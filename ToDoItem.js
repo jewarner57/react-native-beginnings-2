@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ToDoItemList from './ToDoItemList';
-import { StyleSheet, Text, View, TextInput, Button, Switch } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Switch, Slider } from 'react-native';
 
 export default class ToDoItem extends React.Component {
     
@@ -12,22 +12,25 @@ export default class ToDoItem extends React.Component {
     render() {
         
         return (
-            
+                
                 <View 
             
                     key={this.props.itemID}
-                    style = {this.props.textDecoration ? styles.none : styles.decoration}
             
-                ><Text>{this.props.displayedText}</Text> 
+                ><Text style = {styles[this.props.textDecoration]}>{this.props.displayedText}</Text> 
             
-                <Switch 
-                    key={this.props.index} 
-                    onValueChange={this.props.onChange} 
-                    checked={this.props.boxChecked}
-                    value = {this.props.val}
-                />
-            
-                </View>          
+                         
+                
+                    <Slider
+                        style = {styles.slider}
+                        maximumValue = {1}
+                        minimumValue = {0}
+                        key={this.props.index} 
+                        onValueChange={this.props.onChange}
+                        value = {0}
+                    />
+                </View>
+                
                                  
         )
     }
@@ -35,11 +38,17 @@ export default class ToDoItem extends React.Component {
 
 const styles = StyleSheet.create({
     
-    decoration: {
-        backgroundColor: 'red',
+    bold: {
+        fontSize: 40,
     },
     none: {
-        backgroundColor: 'white',
+        fontSize: 25,
+    },
+    noneReset: {
+        fontSize: 25,
+    },
+    slider: {
+        width: 60,
     },
 });
 

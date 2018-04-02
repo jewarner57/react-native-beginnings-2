@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Switch} from 'react-native';
 import React, { Component } from 'react';
 import ActionButton from './ActionButton';
 import ToDoItem from './ToDoItem';
@@ -21,12 +21,12 @@ export default class Note extends React.Component {
             
             id: 999,
             displayedText: "Text",
-            checked: false,
+            checked: 0,
             textDecoration: "none"
             
         })
         
-        this.state = {textValue: "Enter Text Then Press Submit", toDoItem: [], toDoItemCount: 999};
+        this.state = {textValue: "", toDoItem: [], toDoItemCount: 999};
     } 
     
     changeColor() {
@@ -48,7 +48,7 @@ export default class Note extends React.Component {
                     
                 }
                 
-                toDoItemArray[i].checked = false;
+                toDoItemArray[i].checked = 1;
                 
             }
             
@@ -69,7 +69,7 @@ export default class Note extends React.Component {
             
             id: this.state.toDoItemCount,
             displayedText: textValue,
-            checked: false,
+            checked: 0,
             textDecoration: "none"
             
         })
@@ -77,10 +77,15 @@ export default class Note extends React.Component {
         this.setState({toDoItem: toDoItemArray, currentTextVal: textValue, toDoItemCount: this.state.toDoItemCount+1});
     }
     
-    checked() {
+    checked(event) {
         let toDoItemArray = [...this.state.toDoItem];
         
-        toDoItemArray[event.target.id].checked = !(toDoItemArray[event.target.id].checked);
+        if(toDoItemArray[event.target.id].checked == 0) {
+            toDoItemArray[event.target.id].checked = 1
+        }
+        else {
+            toDoItemArray[event.target.id].checked = 0
+        }
         
         this.setState({toDoItem: toDoItemArray});
     }
@@ -106,15 +111,16 @@ export default class Note extends React.Component {
             <View style = {styles.container}>
                 <View>
                     <TextInput  
-                                style={styles.textArea}
-                                value = {this.state.textValue}
-                                onChangeText={(textValue) => this.setState({textValue})}>
+                        style={styles.textArea}
+                        placeholder={'Enter Text Here Then Press Submit'}
+                        value = {this.state.textValue}
+                        onChangeText={(textValue) => this.setState({textValue})}>
                     </TextInput>
         
                     <ActionButton buttonClicked={this.onSubmit} buttonName = {'Submit'}></ActionButton> 
                 </View>
                 <View>
-                    <ToDoItemList key={this.state.toDoItemCount} toDoItem = {this.state.toDoItem} changed={this.checked}> </ToDoItemList>
+                    <ToDoItemList key={this.state.toDoItemCount} toDoItem = {this.state.toDoItem} changed={this.checked} > </ToDoItemList>
                 </View>
                 
                     <ActionButton buttonClicked={this.changeColor} buttonName = {'Bold'}></ActionButton>    
